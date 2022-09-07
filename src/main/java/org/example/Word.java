@@ -49,4 +49,15 @@ public class Word {
     public void setMeaning(String meaning) {
         this.meaning = meaning;
     }
+
+    @Override
+    public String toString() {
+        String str = "";
+        // level
+        for (int i=0; i<level; i++) str += "*";
+        str = String.format("%-3s", str);
+        // word, meaning
+        str += " " + String.format("%15s", word) + "   " + meaning;
+        return str;
+    }
 }

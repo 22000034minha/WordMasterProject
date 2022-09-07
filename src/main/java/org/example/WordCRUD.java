@@ -11,8 +11,16 @@ public class WordCRUD implements ICRUD {
         wordList = new ArrayList<>();
     }
 
+    public void listAll() { // show all words in arraylist
+        for (int i=0; i<wordList.size(); i++) {
+            System.out.println( (i+1) + " " + wordList.get(i) );
+        }
+    }
+
     @Override
-    public Object add() {
+    public Object add(Object obj) { // add Word object to arraylist
+        Word word = (Word) obj;
+        wordList.add(word);
         return null;
     }
 
