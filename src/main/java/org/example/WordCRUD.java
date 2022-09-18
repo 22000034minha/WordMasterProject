@@ -34,7 +34,7 @@ public class WordCRUD implements ICRUD {
         }
     }
 
-    public void search(String str) {
+    public int search(String str) {
         searchedWords.clear();
         int count=0;    // word number
         for (int i=0; i<wordList.size(); i++) {
@@ -44,6 +44,7 @@ public class WordCRUD implements ICRUD {
                 searchedWords.add(i);
             }
         }
+        return count;   // number of found words
     }
 
     public void updateWord(int num) {
@@ -77,10 +78,10 @@ public class WordCRUD implements ICRUD {
         String check = keyboard.nextLine();
         if (check.contains("Y")) {      // if "Y" is input
             wordList.remove(obj);
-            System.out.println("\n선택한 단어 삭제 완료 !!!\n");
+            System.out.println("\n선택한 단어 삭제 완료 !!!");
         }
         else {  // if input is not "Y"
-            System.out.println("\n단어 삭제가 취소되었습니다\n");
+            System.out.println("\n단어 삭제가 취소되었습니다");
         }
         return 0;
     }
