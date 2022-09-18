@@ -19,8 +19,13 @@ public class WordManager {
             menuNum = keyboard.nextInt();
 
             if (menuNum==0) { exit();   break; }    // input 0 : end the program
-            else if (menuNum==1) listAllWord();     // input 1 : list all words
+            else if (menuNum==1) listAllWord();     // input 1 : list all word
+            else if (menuNum==2) listLevelWord();   // input 2 : list each level
+            else if (menuNum==3) searchWord();
             else if (menuNum==4) addWord();         // input 4 : add a word
+            else if (menuNum==5) ;
+            else if (menuNum==6) ;
+            else if (menuNum==7) ;
         }
 
     }
@@ -50,6 +55,20 @@ public class WordManager {
         wordCRUD.listAll();     // read from Word CRUD
         System.out.println("--------------------------------");
         System.out.println();
+    }
+
+    public void listLevelWord() {   // menu 2 : list each level
+        System.out.print("=> 레벨(1:초급, 2:중급, 3:고급) 선택 : ");
+        int selectLevel = keyboard.nextInt();
+        System.out.println();
+        System.out.println("--------------------------------");
+        wordCRUD.listLevel(selectLevel);    // read words of the selected level
+        System.out.println("--------------------------------");
+        System.out.println();
+    }
+
+    public void searchWord() {
+
     }
 
     public void addWord() {     // menu 4 : add new word
