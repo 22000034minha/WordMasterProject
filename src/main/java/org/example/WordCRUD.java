@@ -3,11 +3,14 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class WordCRUD implements ICRUD {
     ArrayList<Word> wordList;
+    ArrayList<Integer> searchedWords;
 
     public WordCRUD() {
+        searchedWords = new ArrayList<>();
         wordList = new ArrayList<>();
     }
 
@@ -28,13 +31,19 @@ public class WordCRUD implements ICRUD {
     }
 
     public void search(String str) {
+        searchedWords.clear();
         int count=0;    // word number
         for (int i=0; i<wordList.size(); i++) {
             if (wordList.get(i).getWord().contains(str)) {
                 count++;
                 System.out.println((count) + " " + wordList.get(i));
+                searchedWords.add(i);
             }
         }
+    }
+
+    public void updateWord(int num) {
+        update(wordList.get(searchedWords.get(num-1)));   // update Word from searchedWords
     }
 
     @Override
@@ -45,7 +54,13 @@ public class WordCRUD implements ICRUD {
     }
 
     @Override
-    public int update(Object obj) {
+    public int update(Object obj) { // update a Word object in arraylist
+        // input meaning
+        Scanner keyboard = new Scanner(System.in);
+        System.out.print("=> 뜻 입력 :");
+        String update_meaning = keyboard.nextLine();
+        // update Word object
+        ((Word) obj).setMeaning(update_meaning);
         return 0;
     }
 
@@ -54,8 +69,4 @@ public class WordCRUD implements ICRUD {
         return 0;
     }
 
-    @Override
-    public void selectOne(int id) {
-
-    }
 }

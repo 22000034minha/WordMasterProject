@@ -19,13 +19,13 @@ public class WordManager {
             menuNum = keyboard.nextInt();
 
             if (menuNum==0) { exit();   break; }    // input 0 : end the program
-            else if (menuNum==1) listAllWord();     // input 1 : list all word
+            else if (menuNum==1) listAllWord();     // input 1 : list all words
             else if (menuNum==2) listLevelWord();   // input 2 : list each level
-            else if (menuNum==3) searchWord();
+            else if (menuNum==3) searchWord();      // input 3 : list searched words
             else if (menuNum==4) addWord();         // input 4 : add a word
-            else if (menuNum==5) ;
-            else if (menuNum==6) ;
-            else if (menuNum==7) ;
+            else if (menuNum==5) updateWord();      // input 5 : modify a word
+            else if (menuNum==6) deleteWord();
+            else if (menuNum==7) saveFile();
         }
 
     }
@@ -94,6 +94,29 @@ public class WordManager {
         wordCRUD.add(newWord);
 
         System.out.println("\n새 단어가 단어장에 추가되었습니다 !!!\n");
+    }
+
+    public void updateWord() {  // menu 5 : modify a word
+        // search word
+        System.out.print("=> 수정할 단어 검색 : ");
+        String update_input = keyboard.nextLine();  // eliminate '\n'
+        update_input = keyboard.nextLine();
+        System.out.println();
+        System.out.println("--------------------------------");
+        wordCRUD.search(update_input);
+        System.out.println("--------------------------------");
+        // select word
+        System.out.print("=> 수정할 번호 선택 : ");
+        int update_num = keyboard.nextInt();
+        wordCRUD.updateWord(update_num);
+    }
+
+    public void deleteWord() {
+
+    }
+
+    public void saveFile() {
+
     }
 
 }
