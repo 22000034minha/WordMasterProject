@@ -18,9 +18,12 @@ public class WordCRUD implements ICRUD {
     }
 
     public void listLevel(int level) { // show all words in arraylist
+        int count=0;    // word number
         for (int i=0; i<wordList.size(); i++) {
-            if (wordList.get(i).getLevel()==level)
-                System.out.println( (i+1) + " " + wordList.get(i) );
+            if (wordList.get(i).getLevel()==level) {
+                count++;
+                System.out.println((count) + " " + wordList.get(i));
+            }
         }
     }
 
