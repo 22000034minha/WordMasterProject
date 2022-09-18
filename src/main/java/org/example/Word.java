@@ -3,7 +3,6 @@
 package org.example;
 
 public class Word {
-    private int id;
     private int level;
     private String word;
     private String meaning;
@@ -11,19 +10,10 @@ public class Word {
     public Word() {
     }
 
-    public Word(int id, int level, String word, String meaning) {
-        this.id = id;
+    public Word(int level, String word, String meaning) {
         this.level = level;
         this.word = word;
         this.meaning = meaning;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getLevel() {

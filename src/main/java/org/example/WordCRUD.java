@@ -2,9 +2,7 @@
 
 package org.example;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -99,4 +97,18 @@ public class WordCRUD implements ICRUD {
         }
     }
 
+    public void loadFile() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            String newWord = reader.readLine();
+            for (; newWord!=null; newWord=reader.readLine()) {
+                String splited[] = newWord.split("\\|");
+                wordList.add(new Word(Integer.valueOf(splited[0]),splited[1],splited[2]));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

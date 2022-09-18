@@ -10,6 +10,7 @@ public class WordManager {
 
     public void start() {   // program starts
         System.out.println("*** 영단어 마스터 ***");
+        wordCRUD.loadFile();
 
         int menuNum;    // variable : input manu number
         keyboard = new Scanner(System.in);
@@ -90,7 +91,7 @@ public class WordManager {
         String meaning = keyboard.nextLine();
 
         // create Word object
-        Word newWord = new Word(0, level, word, meaning);
+        Word newWord = new Word(level, word, meaning);
         wordCRUD.add(newWord);
 
         System.out.println("\n새 단어가 단어장에 추가되었습니다 !!!\n");
@@ -130,5 +131,4 @@ public class WordManager {
         wordCRUD.save();
         System.out.println("\n모든 단어 파일 저장 완료 !!!\n");
     }
-
 }

@@ -1,0 +1,9 @@
+1|add|더하다
+2|superficial|피상적인
+2|refine|정제하다, 다듬다
+3|elaboration|정교, 상세화
+2|examination|시험, 검토
+3|pragmatic|실용적인
+2|estimate|추정하다, 예상하다
+2|ascent|오르기, 등반
+1|trend|경향, 추세, 유행
