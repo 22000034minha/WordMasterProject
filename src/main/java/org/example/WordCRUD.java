@@ -8,10 +8,12 @@ import java.util.Scanner;
 public class WordCRUD implements ICRUD {
     ArrayList<Word> wordList;
     ArrayList<Integer> searchedWords;
+    Scanner keyboard;
 
     public WordCRUD() {
         searchedWords = new ArrayList<>();
         wordList = new ArrayList<>();
+        keyboard = new Scanner(System.in);
     }
 
     public void listAll() { // show all words in arraylist
@@ -46,6 +48,10 @@ public class WordCRUD implements ICRUD {
         update(wordList.get(searchedWords.get(num-1)));   // update Word from searchedWords
     }
 
+    public void deleteWord(int num) {
+        delete(wordList.get(searchedWords.get(num-1)));   // update Word from searchedWords
+    }
+
     @Override
     public Object add(Object obj) { // add Word object to arraylist
         Word word = (Word) obj;
@@ -56,8 +62,7 @@ public class WordCRUD implements ICRUD {
     @Override
     public int update(Object obj) { // update a Word object in arraylist
         // input meaning
-        Scanner keyboard = new Scanner(System.in);
-        System.out.print("=> 뜻 입력 :");
+        System.out.print("=> 뜻 입력 : ");
         String update_meaning = keyboard.nextLine();
         // update Word object
         ((Word) obj).setMeaning(update_meaning);
@@ -66,6 +71,15 @@ public class WordCRUD implements ICRUD {
 
     @Override
     public int delete(Object obj) {
+        System.out.print("=> 정말로 삭제하실래요? (Y/n) ");
+        String check = keyboard.nextLine();
+        if (check.contains("Y")) {      // if "Y" is input
+            wordList.remove(obj);
+            System.out.println("\n선택한 단어 삭제 완료 !!!\n");
+        }
+        else {  // if input is not "Y"
+            System.out.println("\n단어 삭제가 취소되었습니다\n");
+        }
         return 0;
     }
 

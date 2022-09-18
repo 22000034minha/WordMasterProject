@@ -24,8 +24,8 @@ public class WordManager {
             else if (menuNum==3) searchWord();      // input 3 : list searched words
             else if (menuNum==4) addWord();         // input 4 : add a word
             else if (menuNum==5) updateWord();      // input 5 : modify a word
-            else if (menuNum==6) deleteWord();
-            else if (menuNum==7) saveFile();
+            else if (menuNum==6) deleteWord();      // input 6 : delete a word
+            else if (menuNum==7) saveFile();        // save words into file
         }
 
     }
@@ -108,14 +108,25 @@ public class WordManager {
         // select word
         System.out.print("=> 수정할 번호 선택 : ");
         int update_num = keyboard.nextInt();
-        wordCRUD.updateWord(update_num);
+        wordCRUD.updateWord(update_num);    // update
     }
 
-    public void deleteWord() {
-
+    public void deleteWord() {  // delete a word
+        // search word
+        System.out.print("=> 삭제할 단어 검색 : ");
+        String delete_input = keyboard.nextLine();  // eliminate '\n'
+        delete_input = keyboard.nextLine();
+        System.out.println();
+        System.out.println("--------------------------------");
+        wordCRUD.search(delete_input);
+        System.out.println("--------------------------------");
+        // select word
+        System.out.print("=> 삭제할 번호 선택 : ");
+        int delete_num = keyboard.nextInt();
+        wordCRUD.deleteWord(delete_num);    // delete
     }
 
-    public void saveFile() {
+    public void saveFile() {    // save
 
     }
 
