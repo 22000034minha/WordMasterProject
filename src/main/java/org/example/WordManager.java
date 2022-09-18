@@ -83,7 +83,7 @@ public class WordManager {
         // 난이도, 단어 입력
         System.out.print("\n=> 난이도(1,2,3) & 새 단어 입력 : ");
         int level = keyboard.nextInt();
-        String word = keyboard.nextLine();
+        String word = keyboard.nextLine().substring(1);
 
         // 뜻 입력
         System.out.print("뜻 입력 : ");
@@ -127,7 +127,8 @@ public class WordManager {
     }
 
     public void saveFile() {    // save
-
+        wordCRUD.save();
+        System.out.println("\n모든 단어 파일 저장 완료 !!!\n");
     }
 
 }

@@ -2,6 +2,9 @@
 
 package org.example;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,6 +12,7 @@ public class WordCRUD implements ICRUD {
     ArrayList<Word> wordList;
     ArrayList<Integer> searchedWords;
     Scanner keyboard;
+    final String fileName = "Dictionary.txt";
 
     public WordCRUD() {
         searchedWords = new ArrayList<>();
@@ -81,6 +85,18 @@ public class WordCRUD implements ICRUD {
             System.out.println("\n단어 삭제가 취소되었습니다\n");
         }
         return 0;
+    }
+
+    public void save() {    // save as txt file
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter(fileName));
+            for (Word eachWord: wordList) {     // write all words
+                writer.write(eachWord.fileFormat()+"\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

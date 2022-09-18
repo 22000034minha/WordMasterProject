@@ -60,4 +60,9 @@ public class Word {
         str += " " + String.format("%15s", word) + "   " + meaning;
         return str;
     }
+
+    public String fileFormat() {    // file writing format
+        String str = level+"|"+word+"|"+meaning;
+        return str;
+    }
 }
