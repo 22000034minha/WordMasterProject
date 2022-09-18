@@ -27,12 +27,15 @@ public class WordManager {
             else if (menuNum==5) updateWord();      // input 5 : modify a word
             else if (menuNum==6) deleteWord();      // input 6 : delete a word
             else if (menuNum==7) saveFile();        // save words into file
+            else {
+                System.out.println("잘못 입력하셨습니다");
+            }
         }
 
     }
 
     public void printMenu(){     // show menu
-        System.out.print("********************\n" +
+        System.out.print("\n********************\n" +
                 "1. 모든 단어 보기\n" +
                 "2. 수준별 단어 보기\n" +
                 "3. 단어 검색\n" +
@@ -55,7 +58,6 @@ public class WordManager {
         System.out.println("--------------------------------");
         wordCRUD.listAll();     // read from Word CRUD
         System.out.println("--------------------------------");
-        System.out.println();
     }
 
     public void listLevelWord() {   // menu 2 : list each level
@@ -65,7 +67,6 @@ public class WordManager {
         System.out.println("--------------------------------");
         wordCRUD.listLevel(selectLevel);    // read words of the selected level
         System.out.println("--------------------------------");
-        System.out.println();
     }
 
     public void searchWord() {  // menu 3 : search word that contains input string
@@ -74,9 +75,9 @@ public class WordManager {
         search_input = keyboard.nextLine();
         System.out.println();
         System.out.println("--------------------------------");
-        wordCRUD.search(search_input);
+        int count = wordCRUD.search(search_input);
+        if (count==0) System.out.println("검색한 단어가 없습니다");
         System.out.println("--------------------------------");
-        System.out.println();
     }
 
     public void addWord() {     // menu 4 : add new word
@@ -94,7 +95,7 @@ public class WordManager {
         Word newWord = new Word(level, word, meaning);
         wordCRUD.add(newWord);
 
-        System.out.println("\n새 단어가 단어장에 추가되었습니다 !!!\n");
+        System.out.println("\n새 단어가 단어장에 추가되었습니다 !!!");
     }
 
     public void updateWord() {  // menu 5 : modify a word
@@ -104,12 +105,16 @@ public class WordManager {
         update_input = keyboard.nextLine();
         System.out.println();
         System.out.println("--------------------------------");
-        wordCRUD.search(update_input);
+        int count = wordCRUD.search(update_input);
+        if (count==0) System.out.println("수정할 단어가 없습니다");
         System.out.println("--------------------------------");
         // select word
-        System.out.print("=> 수정할 번호 선택 : ");
-        int update_num = keyboard.nextInt();
-        wordCRUD.updateWord(update_num);    // update
+        if (count>0) {
+            System.out.print("=> 수정할 번호 선택 : ");
+            int update_num = keyboard.nextInt();
+            wordCRUD.updateWord(update_num);    // update
+            System.out.println("\n단어 수정이 성공적으로 되었습니다!!");
+        }
     }
 
     public void deleteWord() {  // delete a word
@@ -119,16 +124,19 @@ public class WordManager {
         delete_input = keyboard.nextLine();
         System.out.println();
         System.out.println("--------------------------------");
-        wordCRUD.search(delete_input);
+        int count = wordCRUD.search(delete_input);
+        if (count==0) System.out.println("삭제할 단어가 없습니다");
         System.out.println("--------------------------------");
         // select word
-        System.out.print("=> 삭제할 번호 선택 : ");
-        int delete_num = keyboard.nextInt();
-        wordCRUD.deleteWord(delete_num);    // delete
+        if (count>0) {
+            System.out.print("=> 삭제할 번호 선택 : ");
+            int delete_num = keyboard.nextInt();
+            wordCRUD.deleteWord(delete_num);    // delete
+        }
     }
 
     public void saveFile() {    // save
         wordCRUD.save();
-        System.out.println("\n모든 단어 파일 저장 완료 !!!\n");
+        System.out.println("\n모든 단어 파일 저장 완료 !!!");
     }
 }
