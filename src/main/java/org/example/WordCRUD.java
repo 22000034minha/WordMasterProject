@@ -27,6 +27,16 @@ public class WordCRUD implements ICRUD {
         }
     }
 
+    public void search(String str) {
+        int count=0;    // word number
+        for (int i=0; i<wordList.size(); i++) {
+            if (wordList.get(i).getWord().contains(str)) {
+                count++;
+                System.out.println((count) + " " + wordList.get(i));
+            }
+        }
+    }
+
     @Override
     public Object add(Object obj) { // add Word object to arraylist
         Word word = (Word) obj;

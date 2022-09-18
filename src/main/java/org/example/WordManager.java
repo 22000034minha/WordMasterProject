@@ -67,8 +67,15 @@ public class WordManager {
         System.out.println();
     }
 
-    public void searchWord() {
-
+    public void searchWord() {  // menu 3 : search word that contains input string
+        System.out.print("=> 검색할 단어 입력 : ");
+        String search_input = keyboard.nextLine();      // eliminate '\n'
+        search_input = keyboard.nextLine();
+        System.out.println();
+        System.out.println("--------------------------------");
+        wordCRUD.search(search_input);
+        System.out.println("--------------------------------");
+        System.out.println();
     }
 
     public void addWord() {     // menu 4 : add new word
